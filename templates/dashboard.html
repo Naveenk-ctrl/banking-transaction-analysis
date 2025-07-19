@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banking Transaction Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container py-5">
+    <h1 class="text-center mb-4">🏦 Banking Transaction Dashboard</h1>
+   
+   <!-- Navigation Buttons -->
+<div class="d-flex flex-wrap gap-3 mb-4">
+    <a href="/" class="btn btn-primary">🏠 Dashboard</a>
+    <a href="/fraud" class="btn btn-danger">🚨 Fraud Transactions</a>
+    <a href="/recent" class="btn btn-success">📄 Recent Transactions</a>
+    <a href="/filter" class="btn btn-warning">📅 Filter by Date</a>
+</div>
+
+    <!-- Top 5 Customers -->
+    <h3 class="text-primary">Top 5 Customers by Debit Spending</h3>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr><th>Name</th><th>Total Debit (₹)</th></tr>
+        </thead>
+        <tbody>
+        {% for row in top_spenders %}
+            <tr>
+                <td>{{ row.Name }}</td>
+                <td>₹ {{ "{:,.2f}".format(row.TotalDebit) }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Credit vs Debit Pie Chart -->
+    <h3 class="text-danger mt-5">Credit vs Debit Summary (Pie Chart)</h3>
+   <canvas id="creditDebitChart" style="width: 250px; height: 250px;"></canvas>
+
+    <!-- Monthly Trend Line Chart -->
+    <h3 class="text-success mt-5">Monthly Credit vs Debit Trend (Line Chart)</h3>
+    <canvas id="monthlyTrendChart" width="800" height="400"></canvas>
+    
+</div>
+
+<!-- Passing data to JS -->
+<script id="totalsData" type="application/json">{{ totals|tojson }}</script>
+<script id="monthlyData" type="application/json">{{ monthly|tojson }}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='charts.js') }}"></script>
+
+</body>
+</html>
