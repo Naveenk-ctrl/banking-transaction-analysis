@@ -1,8 +1,8 @@
-# 🏦 Banking Transaction Analysis System
+#  Banking Transaction Analysis System
 
 This project analyzes and visualizes banking transactions using **Python**, **MySQL**, and **Matplotlib**.
 
-## 📌 Features
+##  Features
 
 - Relational database schema with MySQL
 - Realistic data generation using Faker
@@ -12,20 +12,15 @@ This project analyzes and visualizes banking transactions using **Python**, **My
   - Credit vs Debit distribution
 - Visualizations using Matplotlib
 
-## 📁 Folder Structure
+The system allows you to:
 
-- `sql/` – Database schema
-- `data_gen/` – Data generation scripts
-- `analysis/` – SQL queries for insights
-- `visualization/` – Graphs and reports
+View overall transaction trends with clear visualizations.
 
-## 🚀 How to Run
+Identify top customers based on their account balances and debit transactions.
 
-1. Set up MySQL and run `sql/schema.sql`
-2. Run `data_gen/generate_data.py` to insert fake data
-3. Run `visualization/transaction_plots.py` to generate graphs
+Detect fraud based on high-value transactions and unusual activity times.
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - Python 3
 - MySQL
